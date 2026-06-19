@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mr. Chocho | Pollería Fast Food</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .page {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    /* HEADER */
+    .logo-area {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+    .logo-placeholder {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #F5C800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+      border: 3px solid #e0b800;
+    }
+    .logo-placeholder span {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-align: center;
+      line-height: 1.3;
+      letter-spacing: 0.03em;
+    }
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .brand-sub {
+      font-size: 13px;
+      color: #888;
+      margin-top: 2px;
+    }
+    .tagline {
+      font-size: 13px;
+      color: #666;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      color: #1a1a1a;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn:hover { background: #f9f9f9; transform: scale(1.01); }
+    .btn:active { transform: scale(0.99); }
+    .btn-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 22px;
+    }
+    .btn-icon.green { background: #e6f4ea; }
+    .btn-icon.insta { background: #fce8f3; }
+    .btn-icon.menu  { background: #fff3e0; }
+    .btn-text { flex: 1; text-align: left; }
+    .btn-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+    .btn-desc  { font-size: 12px; color: #888; margin-top: 2px; }
+    .chevron   { font-size: 18px; color: #bbb; }
+
+    /* MENU PANEL */
+    .menu-panel {
+      display: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      padding: 1rem;
+      margin-top: -8px;
+      margin-bottom: 12px;
+      background: #fafafa;
+    }
+    .menu-panel.open { display: block; }
+    .menu-cat { margin-bottom: 1rem; }
+    .menu-cat:last-child { margin-bottom: 0; }
+    .menu-cat-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #ebebeb;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      font-size: 13px;
+      color: #333;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-price { font-weight: 600; color: #c0392b; flex-shrink: 0; margin-left: 8px; }
+
+    /* FOOTER */
+    .divider { height: 1px; background: #e8e8e8; margin: 1rem 0; }
+    .address {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      line-height: 1.7;
+    }
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #bbb;
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="logo-area">
+    <!-- Reemplaza este bloque con tu logo una vez en Carrd -->
+    <div class="logo-placeholder">
+      <span>MR.<br>CHOCHO</span>
+    </div>
+    <div class="brand-name">Mr. Chocho</div>
+    <div class="brand-sub">Pollería · Fast Food</div>
+    <div class="tagline">Come rico a un precio justo</div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/51902802144?text=Hola%20Mr.%20Chocho!%20Quiero%20dejarte%20una%20recomendaci%C3%B3n%20o%20sugerencia%20%F0%9F%8D%97" class="btn" target="_blank">
+    <div class="btn-icon green">💬</div>
+    <div class="btn-text">
+      <div class="btn-title">Escríbenos por WhatsApp</div>
+      <div class="btn-desc">Quejas, sugerencias o consultas</div>
+    </div>
+    <span class="chevron">›</span>
+  </a>
+
+  <!-- CARTA -->
+  <div class="btn" onclick="toggleMenu()" id="menu-btn">
+    <div class="btn-icon menu">🍗</div>
+    <div class="btn-text">
+      <div class="btn-title">Ver nuestra carta</div>
+      <div class="btn-desc">Pollos, burgers, enchiladas y más</div>
+    </div>
+    <span class="chevron" id="menu-chevron">›</span>
+  </div>
+
+  <div class="menu-panel" id="menu-panel">
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍗 Pollo a la brasa</div>
+      <div class="menu-item"><span>Mostrito (1/8)</span><span class="menu-price">S/ 10</span></div>
+      <div class="menu-item"><span>1/4 Pollo</span><span class="menu-price">S/ 13</span></div>
+      <div class="menu-item"><span>1/2 Pollo</span><span class="menu-price">S/ 25</span></div>
+      <div class="menu-item"><span>1/2 Pollo + Chaufa</span><span class="menu-price">S/ 30</span></div>
+      <div class="menu-item"><span>1 Pollo entero</span><span class="menu-price">S/ 48</span></div>
+      <div class="menu-item"><span>1/4 Pollo + Chaufa (promo)</span><span class="menu-price">S/ 15</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍳 Promos personales</div>
+      <div class="menu-item"><span>Mostri Promo</span><span class="menu-price">S/ 12</span></div>
+      <div class="menu-item"><span>Chocho Xtremo</span><span class="menu-price">S/ 25</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍗 Pollo Broaster</div>
+      <div class="menu-item"><span>1/4 Pierna Broaster</span><span class="menu-price">S/ 13</span></div>
+      <div class="menu-item"><span>1/4 Pecho Broaster</span><span class="menu-price">S/ 14</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍔 Hamburguesas</div>
+      <div class="menu-item"><span>La Clásica</span><span class="menu-price">S/ 10</span></div>
+      <div class="menu-item"><span>Americana</span><span class="menu-price">S/ 13</span></div>
+      <div class="menu-item"><span>Sandwich Pollo Brasa</span><span class="menu-price">S/ 13</span></div>
+      <div class="menu-item"><span>Royal</span><span class="menu-price">S/ 15</span></div>
+      <div class="menu-item"><span>Parrillera / Crispy</span><span class="menu-price">S/ 16</span></div>
+      <div class="menu-item"><span>Carnivoro</span><span class="menu-price">S/ 18</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🌯 Enchiladas</div>
+      <div class="menu-item"><span>Brasera</span><span class="menu-price">S/ 12</span></div>
+      <div class="menu-item"><span>De Pollo</span><span class="menu-price">S/ 13</span></div>
+      <div class="menu-item"><span>De Chorizo</span><span class="menu-price">S/ 14</span></div>
+      <div class="menu-item"><span>De Carne</span><span class="menu-price">S/ 15</span></div>
+      <div class="menu-item"><span>Mixto / Twister</span><span class="menu-price">S/ 16</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍟 Salchipapas</div>
+      <div class="menu-item"><span>Salchipapa</span><span class="menu-price">S/ 9</span></div>
+      <div class="menu-item"><span>Salchimix</span><span class="menu-price">S/ 11</span></div>
+      <div class="menu-item"><span>Salchi Nuggets</span><span class="menu-price">S/ 12</span></div>
+      <div class="menu-item"><span>Salchipizza</span><span class="menu-price">S/ 13</span></div>
+      <div class="menu-item"><span>Salchipollo</span><span class="menu-price">S/ 14</span></div>
+      <div class="menu-item"><span>Salchi Carne / Salchibrasa</span><span class="menu-price">S/ 15</span></div>
+      <div class="menu-item"><span>Brasamix / Salchibroaster</span><span class="menu-price">S/ 16</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🥤 Bebidas</div>
+      <div class="menu-item"><span>Chicha Morada (jarra 1lt)</span><span class="menu-price">S/ 12</span></div>
+      <div class="menu-item"><span>Limonada (jarra 1lt)</span><span class="menu-price">S/ 10</span></div>
+      <div class="menu-item"><span>Limonada Frozen</span><span class="menu-price">S/ 14</span></div>
+      <div class="menu-item"><span>Vaso de Chicha</span><span class="menu-price">S/ 3.50</span></div>
+      <div class="menu-item"><span>Jugos naturales</span><span class="menu-price">S/ 9 – 12</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">👨‍👩‍👧 Promos familiares</div>
+      <div class="menu-item"><span>1 Pollo familiar</span><span class="menu-price">S/ 55</span></div>
+      <div class="menu-item"><span>1 Pollo + Chaufa</span><span class="menu-price">S/ 62</span></div>
+      <div class="menu-item"><span>1 Pollo y Medio</span><span class="menu-price">S/ 75</span></div>
+      <div class="menu-item"><span>2 Pollos</span><span class="menu-price">S/ 100</span></div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍱 Promos para 2</div>
+      <div class="menu-item"><span>Mega Xtremo</span><span class="menu-price">S/ 35</span></div>
+      <div class="menu-item"><span>Combo Brasero</span><span class="menu-price">S/ 28</span></div>
+      <div class="menu-item"><span>1/2 Pollo Promo</span><span class="menu-price">S/ 27</span></div>
+    </div>
+
+  </div>
+
+  <!-- INSTAGRAM -->
+  <a href="https://www.instagram.com/mr.chochooficial/" class="btn" target="_blank">
+    <div class="btn-icon insta">📸</div>
+    <div class="btn-text">
+      <div class="btn-title">Síguenos en Instagram</div>
+      <div class="btn-desc">@mr.chochooficial</div>
+    </div>
+    <span class="chevron">›</span>
+  </a>
+
+  <div class="divider"></div>
+
+  <div class="address">
+    📍 Av. 13 de Enero 1127 SJL &nbsp;·&nbsp; Av. Los Tusilagos Oeste 181 SJL
+  </div>
+  <div class="footer">© 2025 Mr. Chocho · Pollería Fast Food</div>
+
+</div>
+
+<script>
+  function toggleMenu() {
+    const panel = document.getElementById('menu-panel');
+    const chevron = document.getElementById('menu-chevron');
+    const isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open');
+    chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+    chevron.style.transition = 'transform 0.2s';
+  }
+</script>
+</body>
+</html>
